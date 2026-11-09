@@ -1,6 +1,6 @@
-# DEMO STORE
+# BRAND GRODNO
 
-Магазин одежды, обуви и аксессуаров DEMO STORE в Telegram Mini App.
+Магазин одежды, обуви и аксессуаров BRAND GRODNO в Telegram Mini App.
 
 ## Запуск на Mac — простая инструкция
 
@@ -571,7 +571,7 @@ haptic feedback. Раздел магазина и валюта синхрони�
 настройками backend; без Telegram они сохраняются локально. Корзина и избранное
 загружаются через React Query, а действия поддерживают оптимистичные обновления.
 
-Дизайн-система DEMO STORE использует CSS-токены в `frontend/src/styles.css`:
+Дизайн-система BRAND GRODNO использует CSS-токены в `frontend/src/styles.css`:
 секции `men`/`women`, темы `dark`/`light`, акцентные цвета, Manrope и Unbounded,
 карточки и поля с радиусом 14 px, а также поддержку `prefers-reduced-motion`.
 Основной каркас магазина расположен по адресам `/shop/clothing`, `/shop/shoes`,

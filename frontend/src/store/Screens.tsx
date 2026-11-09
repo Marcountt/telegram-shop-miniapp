@@ -201,8 +201,8 @@ export function EntryScreen() {
 
   return (
     <section className={`entry-screen${selected ? ' entry-screen--chosen' : ''}`}>
-      <p aria-label="DEMO STORE" className="eyebrow entry-screen__logo">
-        {'DEMO STORE'.split('').map((letter, index) => (
+      <p aria-label="BRAND GRODNO" className="eyebrow entry-screen__logo">
+        {'BRAND GRODNO'.split('').map((letter, index) => (
           <motion.span
             aria-hidden="true"
             animate={{ opacity: 1, y: 0 }}
@@ -1276,7 +1276,7 @@ export function OrderSuccessScreen() {
         initial={{ opacity: 0, y: reduceMotion ? 0 : 10 }}
         transition={{ delay: reduceMotion ? 0 : 0.18, duration: motionDuration.fade, ease: motionEase.standard }}
       >
-        <p className="eyebrow">DEMO STORE</p>
+        <p className="eyebrow">BRAND GRODNO</p>
         <h1>ЗАКАЗ ОФОРМЛЕН</h1>
         <p>
           {created?.order
@@ -1427,7 +1427,7 @@ export function DeliveryScreen() {
   if (query.isError) return <ErrorState error={query.error} retry={() => query.refetch()} />
   return (
     <section className="store-page">
-      <p className="eyebrow">DEMO STORE</p>
+      <p className="eyebrow">BRAND GRODNO</p>
       <h1 className="store-page__title">ДОСТАВКА</h1>
       <div className="delivery-method-list">
         {query.data?.delivery_methods.map((method) => (
@@ -1456,7 +1456,7 @@ export function ContactScreen() {
   const username = query.data?.manager_username
   return (
     <section className="store-page">
-      <p className="eyebrow">DEMO STORE</p>
+      <p className="eyebrow">BRAND GRODNO</p>
       <h1 className="store-page__title">МЕНЕДЖЕР</h1>
       <p className="product-detail__description">Если у вас есть вопросы по размеру, доставке или заказу — напишите нам.</p>
       {username && (

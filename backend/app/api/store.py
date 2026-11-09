@@ -339,7 +339,7 @@ def _manager_message(order: StoreOrder, rate: Decimal) -> str:
     ]
     location = order.delivery_address
     message = (
-        f"Заказ DEMO STORE #{str(order.id)[:8]}\n"
+        f"Заказ BRAND GRODNO #{str(order.id)[:8]}\n"
         f"Товары: {'; '.join(item_lines)}\n"
         f"Сумма: {currency_total} {currency}\n"
         f"Доставка: {order.delivery_method_name[:30]}, {order.city[:60]}, {location[:150]}"

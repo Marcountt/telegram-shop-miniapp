@@ -1138,7 +1138,7 @@ function AdminOrdersView() {
       <section className="admin-panel">
         <header className="admin-header">
           <div>
-            <p className="eyebrow">DEMO STORE · {currency}</p>
+            <p className="eyebrow">BRAND GRODNO · {currency}</p>
             <h1>Панель управления</h1>
           </div>
           <Link aria-label="Вернуться в магазин" className="admin-close" to="/shop/profile">×</Link>

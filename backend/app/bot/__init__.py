@@ -1,1 +1,1 @@
-"""Telegram-бот магазина DEMO STORE."""
+"""Telegram-бот магазина BRAND GRODNO."""

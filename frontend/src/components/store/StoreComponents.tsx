@@ -60,8 +60,8 @@ export function Header({
       <button className="icon-button" aria-label="Открыть меню" onClick={onMenu}>
         <Icon name="menu" />
       </button>
-      <Link aria-label="DEMO STORE — главная" className="store-header__logo" to="/">
-        DEMO STORE
+      <Link aria-label="BRAND GRODNO — главная" className="store-header__logo" to="/">
+        BRAND GRODNO
       </Link>
       <div className="store-header__actions">
         <button className="icon-button" aria-label="Поиск" onClick={onSearch}>
@@ -119,7 +119,7 @@ export function Drawer({
   open,
   onClose,
   side = 'left',
-  title = 'DEMO STORE',
+  title = 'BRAND GRODNO',
   children,
 }: {
   open: boolean

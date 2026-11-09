@@ -56,7 +56,7 @@ class StoreSeedTests(unittest.TestCase):
         self.assertEqual(STORE_SETTINGS["manager_username"], "your_manager")
         self.assertEqual(STORE_SETTINGS["reviews_url"], "https://t.me/your_reviews_channel")
         self.assertEqual(STORE_SETTINGS["byn_to_rub_rate"], 30)
-        self.assertEqual(STORE_SETTINGS["store_name"], "DEMO STORE")
+        self.assertEqual(STORE_SETTINGS["store_name"], "BRAND GRODNO")
         self.assertEqual(len(HOW_TO_ORDER_STEPS), 4)
 
     def test_delivery_methods_have_requested_prices_and_are_active(self) -> None:

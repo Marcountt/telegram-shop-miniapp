@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🛍️ Telegram Mini App Store
+# 🛍️ BRAND GRODNO — Telegram Mini App Store
 
 **A complete online store inside Telegram — catalog, cart, orders, admin panel and a bot for managers.**
 
@@ -21,7 +21,7 @@
 Customers open the store with one tap from the bot, browse products, pick a size, place an order and continue the conversation with a manager — without leaving Telegram.
 The store owner manages products, photos, prices, stock and orders from an admin panel inside the same Mini App.
 
-> This repository is a **demo version** with an invented store name and demo products.
+> Built for **BRAND GRODNO** — a clothing, shoes and accessories store in Grodno. The catalog in this repository is seed data with placeholder products.
 
 <!--
 ## 📸 Screenshots

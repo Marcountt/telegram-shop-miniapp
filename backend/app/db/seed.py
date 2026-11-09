@@ -1,4 +1,4 @@
-"""Идемпотентное заполнение настроек и демо-каталога DEMO STORE."""
+"""Идемпотентное заполнение настроек и демо-каталога BRAND GRODNO."""
 import asyncio
 from decimal import Decimal
 from typing import Any
@@ -33,14 +33,14 @@ STORE_SETTINGS: dict[str, Any] = {
     "byn_to_rub_rate": Decimal("30"),
     "welcome_text": (
         "Просматривайте товары в наличии, выбирайте размер и оформляйте заказ "
-        "прямо в каталоге DEMO STORE."
+        "прямо в каталоге BRAND GRODNO."
     ),
     "delivery_info_text": (
         "Доставляем Белпочтой, Европочтой, СДЭК и курьером. Стоимость и "
         "условия зависят от выбранного способа доставки."
     ),
     "how_to_order_steps": HOW_TO_ORDER_STEPS,
-    "store_name": "DEMO STORE",
+    "store_name": "BRAND GRODNO",
 }
 
 DELIVERY_METHODS = [
@@ -89,16 +89,16 @@ SIZE_OPTIONS = [
 ]
 
 CATEGORIES = [
-    {"name": "Одежда", "slug": "odezhda", "description": "Одежда DEMO STORE.", "group_key": "clothing"},
-    {"name": "Аксессуары", "slug": "aksessuary", "description": "Аксессуары DEMO STORE.", "group_key": "clothing"},
-    {"name": "Обувь", "slug": "obuv", "description": "Обувь DEMO STORE.", "group_key": "shoes"},
+    {"name": "Одежда", "slug": "odezhda", "description": "Одежда BRAND GRODNO.", "group_key": "clothing"},
+    {"name": "Аксессуары", "slug": "aksessuary", "description": "Аксессуары BRAND GRODNO.", "group_key": "clothing"},
+    {"name": "Обувь", "slug": "obuv", "description": "Обувь BRAND GRODNO.", "group_key": "shoes"},
 ]
 
 DEMO_PRODUCTS = [
     {
-        "slug": "futbolka-demo",
+        "slug": "futbolka-brand-grodno",
         "category_slug": "odezhda",
-        "name": "Футболка DEMO STORE",
+        "name": "Футболка BRAND GRODNO",
         "description": "Базовая футболка из хлопка.",
         "price_byn": Decimal("45"),
         "sizes": ["S", "M", "L", "XL"],
@@ -106,9 +106,9 @@ DEMO_PRODUCTS = [
         "image_text": "T-SHIRT",
     },
     {
-        "slug": "hudi-basic",
+        "slug": "hudi-grodno",
         "category_slug": "odezhda",
-        "name": "Худи «Basic»",
+        "name": "Худи «Гродно»",
         "description": "Тёплое худи свободного кроя.",
         "price_byn": Decimal("120"),
         "sale_price_byn": Decimal("100"),
@@ -127,9 +127,9 @@ DEMO_PRODUCTS = [
         "image_text": "SWEATSHIRT",
     },
     {
-        "slug": "longsliv-demo",
+        "slug": "longsliv-brand-grodno",
         "category_slug": "odezhda",
-        "name": "Лонгслив DEMO STORE",
+        "name": "Лонгслив BRAND GRODNO",
         "description": "Хлопковый лонгслив на каждый день.",
         "price_byn": Decimal("65"),
         "sizes": ["S", "M", "L", "XL"],
@@ -137,9 +137,9 @@ DEMO_PRODUCTS = [
         "image_text": "LONGSLEEVE",
     },
     {
-        "slug": "shoper-demo",
+        "slug": "shoper-brand-grodno",
         "category_slug": "aksessuary",
-        "name": "Шопер DEMO STORE",
+        "name": "Шопер BRAND GRODNO",
         "description": "Тканевая сумка для повседневных вещей.",
         "price_byn": Decimal("20"),
         "sizes": [],
@@ -147,9 +147,9 @@ DEMO_PRODUCTS = [
         "image_text": "SHOPPER",
     },
     {
-        "slug": "kepka-basic",
+        "slug": "kepka-grodno",
         "category_slug": "aksessuary",
-        "name": "Кепка «Basic»",
+        "name": "Кепка «Гродно»",
         "description": "Кепка с регулируемым размером.",
         "price_byn": Decimal("35"),
         "sizes": ["Универсальный"],
@@ -157,9 +157,9 @@ DEMO_PRODUCTS = [
         "image_text": "CAP",
     },
     {
-        "slug": "kedy-demo",
+        "slug": "kedy-brand-grodno",
         "category_slug": "obuv",
-        "name": "Кеды DEMO STORE",
+        "name": "Кеды BRAND GRODNO",
         "description": "Лёгкие городские кеды.",
         "price_byn": Decimal("140"),
         "sizes": ["36", "37", "38", "39", "40", "41", "42", "43"],
@@ -167,9 +167,9 @@ DEMO_PRODUCTS = [
         "image_text": "SNEAKERS",
     },
     {
-        "slug": "krossovki-basic",
+        "slug": "krossovki-grodno",
         "category_slug": "obuv",
-        "name": "Кроссовки «Basic»",
+        "name": "Кроссовки «Гродно»",
         "description": "Удобные кроссовки для города.",
         "price_byn": Decimal("180"),
         "sizes": ["36", "37", "38", "39", "40", "41", "42", "43"],
@@ -182,7 +182,7 @@ DEMO_PRODUCTS = [
 def placeholder_image_url(image_text: str) -> str:
     return (
         "https://placehold.co/800x1000/F2F0EA/161616.png"
-        f"?text=DEMO+STORE+{image_text}"
+        f"?text=BRAND+GRODNO+{image_text}"
     )
 
 
@@ -231,7 +231,7 @@ async def seed_database(session: AsyncSession) -> None:
             "slug": product["slug"],
             "description": product["description"],
             "price_byn": product["price_byn"],
-            "brand": "DEMO STORE",
+            "brand": "BRAND GRODNO",
             "section": "unisex",
             "sale_price_byn": product.get("sale_price_byn"),
             "photos": [

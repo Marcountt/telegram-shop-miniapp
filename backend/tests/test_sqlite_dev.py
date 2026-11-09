@@ -62,7 +62,7 @@ class SQLiteDevelopmentTests(unittest.TestCase):
         products, categories, store_name, open_places = asyncio.run(run())
         self.assertEqual(products, 8)
         self.assertEqual(categories, 3)
-        self.assertEqual(store_name, "DEMO STORE")
+        self.assertEqual(store_name, "BRAND GRODNO")
         self.assertEqual(open_places, 1)
 
 
