@@ -1,0 +1,13 @@
+{$DOMAIN} {
+    tls {$ACME_EMAIL}
+    encode zstd gzip
+
+    @backend path /api/* /health /docs* /openapi.json /uploads*
+    handle @backend {
+        reverse_proxy api:8000
+    }
+
+    handle {
+        reverse_proxy frontend:80
+    }
+}
