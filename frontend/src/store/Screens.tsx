@@ -698,12 +698,26 @@ function ProductSizeSheet({
   )
 }
 
+const CLOTHING_SIZE_ORDER = ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+
+function sizeRank(size: string): number {
+  const index = CLOTHING_SIZE_ORDER.indexOf(size.trim().toUpperCase())
+  if (index >= 0) return index
+  const numeric = Number.parseFloat(size.replace(',', '.'))
+  return Number.isFinite(numeric) ? 100 + numeric : 1000
+}
+
+function compareSizes(a: string, b: string): number {
+  return sizeRank(a) - sizeRank(b) || a.localeCompare(b)
+}
+
 export function ProductScreen() {
   const { productId = '' } = useParams()
   const { currency } = useCurrency()
   const { favoriteIds, toggleFavorite, addToCart } = useStoreState()
   const { favoriteError } = useStoreState()
   const [selectedVariantId, setSelectedVariantId] = useState('')
+  const [selectedColor, setSelectedColor] = useState('')
   const [imageIndex, setImageIndex] = useState(0)
   const [imageDirection, setImageDirection] = useState(1)
   const [toast, setToast] = useState('')
@@ -748,6 +762,30 @@ export function ProductScreen() {
 
   const discounted =
     product.original_price != null && Number(product.original_price) > Number(product.price)
+  // A product can have variants per size AND colour: let the buyer pick the colour
+  // first, then show each size of that colour once, in natural order.
+  const colors = [...new Set(product.variants.map((variant) => variant.color).filter(Boolean))]
+  const hasColorChoice = colors.length > 1
+  const activeColor = hasColorChoice
+    ? (colors.includes(selectedColor)
+        ? selectedColor
+        : (colors.find((color) =>
+            product.variants.some((variant) => variant.color === color && variant.stock > 0),
+          ) ?? colors[0]))
+    : ''
+  const sizeVariants = (
+    hasColorChoice
+      ? product.variants.filter((variant) => variant.color === activeColor)
+      : product.variants
+  ).slice().sort((a, b) => compareSizes(a.size, b.size))
+  const selectColor = (color: string) => {
+    const currentSize = selectedVariant?.size
+    setSelectedColor(color)
+    const sameSize = product.variants.find(
+      (variant) => variant.color === color && variant.size === currentSize && variant.stock > 0,
+    )
+    setSelectedVariantId(sameSize?.id ?? '')
+  }
   const addProduct = async () => {
     if (!selectedVariant || selectedVariant.stock === 0) return
     try {
@@ -847,10 +885,27 @@ export function ProductScreen() {
         <p className="product-card__brand">{product.brand ?? product.category_name}</p>
         <h1>{product.title}</h1>
         {product.description && <p className="product-detail__description">{product.description}</p>}
+        {hasColorChoice && (
+          <section className="product-detail__sizes">
+            <h2>ЦВЕТ:</h2>
+            <div className="store-chip-row">
+              {colors.map((color) => (
+                <SizeChip
+                  disabled={!product.variants.some((variant) => variant.color === color && variant.stock > 0)}
+                  key={color}
+                  onClick={() => selectColor(color)}
+                  selectionId={`product-color-${product.id}`}
+                  selected={activeColor === color}
+                  size={color}
+                />
+              ))}
+            </div>
+          </section>
+        )}
         <section className="product-detail__sizes">
           <h2>РАЗМЕР:</h2>
           <div className="store-chip-row">
-            {product.variants.map((variant) => (
+            {sizeVariants.map((variant) => (
               <SizeChip
                 disabled={variant.stock <= 0}
                 key={variant.id}
@@ -1015,7 +1070,10 @@ export function CartScreen() {
                 <div className="cart-line__heading">
                   <div>
                     <h2>{item.title.toLocaleUpperCase('ru-RU')}</h2>
-                    <p>РАЗМЕР: {item.size || 'УНИВЕРСАЛЬНЫЙ'}</p>
+                    <p>
+                      РАЗМЕР: {item.size || 'УНИВЕРСАЛЬНЫЙ'}
+                      {item.color ? ` · ЦВЕТ: ${item.color.toUpperCase()}` : ''}
+                    </p>
                   </div>
                   <button aria-label={`Удалить ${item.title}`} className="cart-line__remove" onClick={() => removeFromCart(item.variant_id)} type="button">×</button>
                 </div>

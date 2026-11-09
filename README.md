@@ -4,6 +4,8 @@
 
 **A complete online store inside Telegram — catalog, cart, orders, admin panel and a bot for managers.**
 
+<a href="https://github.com/Marcountt/telegram-shop-miniapp/actions/workflows/ci.yml"><img src="https://github.com/Marcountt/telegram-shop-miniapp/actions/workflows/ci.yml/badge.svg" alt="CI"/></a>
+<br/>
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
 <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI"/>
 <img src="https://img.shields.io/badge/aiogram-2AABEE?style=flat-square&logo=telegram&logoColor=white" alt="aiogram"/>
@@ -23,18 +25,27 @@ The store owner manages products, photos, prices, stock and orders from an admin
 
 > Built for **BRAND GRODNO** — a clothing, shoes and accessories store in Grodno. The catalog in this repository is seed data with placeholder products.
 
-<!--
 ## 📸 Screenshots
 
-Add screenshots to docs/screenshots/ and uncomment this block.
+**Customer side** — catalog, product with colour and size, cart, checkout
 
 <p align="center">
-  <img src="docs/screenshots/catalog.png" width="230" alt="Catalog"/>
-  <img src="docs/screenshots/product.png" width="230" alt="Product"/>
-  <img src="docs/screenshots/cart.png" width="230" alt="Cart"/>
-  <img src="docs/screenshots/admin.png" width="230" alt="Admin panel"/>
+  <img src="docs/screenshots/catalog.jpg" width="200" alt="Catalog"/>
+  <img src="docs/screenshots/product.jpg" width="200" alt="Product page with colour and size selection"/>
+  <img src="docs/screenshots/cart.jpg" width="200" alt="Cart"/>
+  <img src="docs/screenshots/checkout.jpg" width="200" alt="Checkout with delivery options"/>
 </p>
--->
+
+**Store owner** — dashboard, product management, order confirmation
+
+<p align="center">
+  <img src="docs/screenshots/admin-dashboard.jpg" width="200" alt="Admin dashboard"/>
+  <img src="docs/screenshots/admin-products.jpg" width="200" alt="Product management"/>
+  <img src="docs/screenshots/order-success.jpg" width="200" alt="Order placed"/>
+  <img src="docs/screenshots/entry.jpg" width="200" alt="Entry screen"/>
+</p>
+
+<sub>Screenshots from a local run with seed data; product photos are placeholders.</sub>
 
 ## ✨ Features
 

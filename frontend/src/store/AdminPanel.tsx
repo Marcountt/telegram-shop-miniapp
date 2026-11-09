@@ -60,6 +60,14 @@ const tabLabels: Array<{ id: AdminTab; label: string }> = [
   { id: 'settings', label: 'Настройки' },
 ]
 
+function sizeCountLabel(count: number): string {
+  const mod10 = count % 10
+  const mod100 = count % 100
+  if (mod10 === 1 && mod100 !== 11) return `${count} размер`
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return `${count} размера`
+  return `${count} размеров`
+}
+
 function messageOf(error: unknown): string {
   if (error instanceof ApiError || error instanceof Error) return error.message
   return 'Не удалось выполнить действие. Проверьте соединение и попробуйте ещё раз.'
@@ -609,7 +617,7 @@ function AdminProductsView({
               <span>{product.brand || product.category_name}</span>
               <div className="admin-product__meta">
                 <b>{formatByn(product.price_byn)}</b>
-                <span>{product.variants.reduce((total, variant) => total + variant.stock, 0)} шт. · {product.variants.length} размеров</span>
+                <span>{product.variants.reduce((total, variant) => total + variant.stock, 0)} шт. · {sizeCountLabel(new Set(product.variants.map((variant) => variant.size)).size)}</span>
               </div>
               <div className="admin-product__actions">
                 <AdminButton onClick={() => setEditing(product)} variant="secondary">Изменить</AdminButton>
